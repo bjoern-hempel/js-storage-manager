@@ -123,6 +123,7 @@ export class Storage {
 				this.storage,
 				(property, value) => {
 					this.storage[property] = value
+					this.setStorage(this.storage)
 				}
 			)
 		}
