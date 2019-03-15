@@ -1,5 +1,56 @@
 const LS_STORAGE_KEY = 'storage'
 
+/**
+ * Class to save data to localStorage.
+ *
+ *
+ * Usage (without observable flag):
+ * --------------------------------
+ *
+ * // Create the "test" storage (localStore.storage.test)
+ * let ts = new Storage('test')
+ *
+ * // Get the entire "test" storage
+ * let observable = false
+ * testStorage = ts.getStorage(observable)
+ *
+ * // Save the entire storage to localStorage (localStorage.storage.test)
+ * let data = [{'id': 123, 'name': 'Björn Hempel'}]
+ * testStorage.data = data
+ * ts.setStorage(testStorage)
+ *
+ * // Save a part of the storage to localStorage (localStorage.storage.test.data2)
+ * let data2 = [{'id': 123, 'name': 'Björn Hempel'}]
+ * ts.set('data2', data2)
+ * console.log(testStorage.data2) // testStorage.data2 = data2 is not needed
+ *
+ * // Get a part of the storage (localStorage.storage.test.data)
+ * let data = ts.get('data')
+ *
+ * // output the entire "test" storage (localStorage.storage.test.data && localStorage.storage.test.data2)
+ * console.log(testStorage)
+ *
+ *
+ * Usage (with observable flag - Proxy):
+ * -------------------------------------
+ *
+ * // Create the "test" storage (localStore.storage.test)
+ * let ts = new Storage('test')
+ *
+ * // Get the entire "test" storage as observable object
+ * let observable = true
+ * testStorage = ts.getStorage(observable)
+ *
+ * // Now all changes on testStorage are automatically saved into the localStorage
+ * let data = [{'id': 123, 'name': 'Björn Hempel'}]
+ * testStorage['data'] = data // auto-save to localstorage
+ * // saved in localStorage: ls.storage.test.data[].id = 123, ls.storage.test.data[].name = 'Björn Hempel'
+ * // same as: ts.set('data', [{'id': 123, 'name': 'Björn Hempel'}]) -> wenn observable = false
+ *
+ * // output the entire "test" storage (localStorage.storage.test.data)
+ * console.log(testStorage)
+ *
+ */
 export class Storage {
 	constructor (area) {
 		this.ls = window.localStorage
