@@ -125,7 +125,18 @@ export class Storage {
 			return this.observe(
 				this.storage,
 				(property, value) => {
-					this.storage[property] = value
+					let data = this.storage
+
+					let properties = property.split('.')
+					let lastProperty = properties.pop()
+
+					/* Iterate through given properties. */
+					properties.forEach(function (key) {
+						data = data[key]
+					})
+
+					data[lastProperty] = value
+
 					this.setStorage(this.storage)
 				}
 			)
@@ -196,9 +207,8 @@ export class Storage {
 	}
 
 	/**
-	 * Get all entries of the queue.
+	 * Returns all entries of the queue.
 	 *
-	 * @param value
 	 * @param key
 	 */
 	getQueue (key = 'queue') {
@@ -235,12 +245,12 @@ export class Storage {
 	}
 
 	/**
-	 * Gets the next queue entry (FIFO).
+	 * Gets the number of queue entries.
 	 *
 	 * @param value
 	 * @param key
 	 */
-	getNumberOfQueueEntries (key = 'queue') {
+	getNumberOfQueuesItems (key = 'queue') {
 		return this.getQueue(key).length
 	}
 
@@ -250,7 +260,7 @@ export class Storage {
 	 * @param value
 	 * @param key
 	 */
-	getNextQueueEntry (key = 'queue') {
+	getNextQueueItem (key = 'queue') {
 		this.initQueue(key)
 
 		let values = this.get(key, [])
@@ -259,7 +269,7 @@ export class Storage {
 			return null
 		}
 
-		if (this.getNumberOfQueueEntries(key) <= 0) {
+		if (this.getNumberOfQueuesItems(key) <= 0) {
 			return null
 		}
 
@@ -272,7 +282,7 @@ export class Storage {
 	 * @param value
 	 * @param key
 	 */
-	deleteNextQueueEntry (key = 'queue') {
+	deleteNextQueueItem (key = 'queue') {
 		this.initQueue(key)
 
 		let values = this.get(key, [])
@@ -281,7 +291,7 @@ export class Storage {
 			return null
 		}
 
-		if (this.getNumberOfQueueEntries(key) <= 0) {
+		if (this.getNumberOfQueuesItems(key) <= 0) {
 			return null
 		}
 
