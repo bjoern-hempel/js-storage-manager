@@ -50,6 +50,9 @@ const LS_STORAGE_KEY = 'storage'
  * // output the entire "test" storage (localStorage.storage.test.data)
  * console.log(testStorage)
  *
+ *
+ * @author  Björn Hempel <bjoern@hempel.li>
+ * @version 1.0 (2019-03-15)
  */
 export class Storage {
 	constructor (area) {
@@ -64,7 +67,7 @@ export class Storage {
 	 *
 	 * @param defaultValue
 	 */
-	initLocalStorage(defaultValue = {}) {
+	initLocalStorage (defaultValue = {}) {
 		if (this.ls.getItem(LS_STORAGE_KEY) === null) {
 			this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(defaultValue))
 		}
@@ -75,7 +78,7 @@ export class Storage {
 	 *
 	 * @returns {any}
 	 */
-	getLocalStorage() {
+	getLocalStorage () {
 		this.initLocalStorage()
 
 		return JSON.parse(this.ls.getItem(LS_STORAGE_KEY))
@@ -86,7 +89,7 @@ export class Storage {
 	 *
 	 * @param value
 	 */
-	setLocalStorage(value) {
+	setLocalStorage (value) {
 		this.initLocalStorage()
 
 		this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(value))
@@ -98,7 +101,7 @@ export class Storage {
 	 * @param defaultValue
 	 * @returns {*}
 	 */
-	initStorage(defaultValue = {}) {
+	initStorage (defaultValue = {}) {
 		let localStorage = this.getLocalStorage()
 
 		if (!localStorage.hasOwnProperty(this.area)) {
@@ -115,7 +118,7 @@ export class Storage {
 	 *
 	 * @returns {*}
 	 */
-	getStorage(observable = false) {
+	getStorage (observable = false) {
 		this.initStorage()
 
 		if (observable) {
@@ -136,7 +139,7 @@ export class Storage {
 	 *
 	 * @param storage
 	 */
-	setStorage(storage) {
+	setStorage (storage) {
 		let localStorage = this.getLocalStorage()
 
 		localStorage[this.area] = storage
@@ -152,7 +155,7 @@ export class Storage {
 	 * @param key
 	 * @returns {*}
 	 */
-	get(key, defaultValue = null, observable = false) {
+	get (key, defaultValue = null, observable = false) {
 		let storageArea = this.getStorage(observable)
 
 		if (!storageArea.hasOwnProperty(key)) {
@@ -168,7 +171,7 @@ export class Storage {
 	 * @param key
 	 * @param value
 	 */
-	set(key, value) {
+	set (key, value) {
 		let storageArea = this.getStorage()
 
 		storageArea[key] = value
@@ -181,7 +184,7 @@ export class Storage {
 	 *
 	 * @param key
 	 */
-	initQueue(key = 'queue') {
+	initQueue (key = 'queue') {
 		let values = this.get(key, [])
 
 		if (!Array.isArray(values)) {
@@ -193,12 +196,30 @@ export class Storage {
 	}
 
 	/**
+	 * Get all entries of the queue.
+	 *
+	 * @param value
+	 * @param key
+	 */
+	getQueue (key = 'queue') {
+		this.initQueue(key)
+
+		let values = this.get(key, [])
+
+		if (!Array.isArray(values)) {
+			return []
+		}
+
+		return values
+	}
+
+	/**
 	 * Adds the given element to the queue.
 	 *
 	 * @param value
 	 * @param key
 	 */
-	pushQueue(value, key = 'queue') {
+	pushQueue (value, key = 'queue') {
 		this.initQueue(key)
 
 		let values = this.get(key, [])
@@ -214,36 +235,90 @@ export class Storage {
 	}
 
 	/**
+	 * Gets the next queue entry (FIFO).
+	 *
+	 * @param value
+	 * @param key
+	 */
+	getNumberOfQueueEntries (key = 'queue') {
+		return this.getQueue(key).length
+	}
+
+	/**
+	 * Gets the next queue entry (FIFO).
+	 *
+	 * @param value
+	 * @param key
+	 */
+	getNextQueueEntry (key = 'queue') {
+		this.initQueue(key)
+
+		let values = this.get(key, [])
+
+		if (!Array.isArray(values)) {
+			return null
+		}
+
+		if (this.getNumberOfQueueEntries(key) <= 0) {
+			return null
+		}
+
+		return values[0]
+	}
+
+	/**
+	 * Deletes the next queue entry and returns it (FIFO).
+	 *
+	 * @param value
+	 * @param key
+	 */
+	deleteNextQueueEntry (key = 'queue') {
+		this.initQueue(key)
+
+		let values = this.get(key, [])
+
+		if (!Array.isArray(values)) {
+			return null
+		}
+
+		if (this.getNumberOfQueueEntries(key) <= 0) {
+			return null
+		}
+
+		return values.shift()
+	}
+
+	/**
 	 * Adds magic getters and setter methods to the given object to be able to react to changes with a
 	 * callback function.
 	 *
 	 * @param obj
 	 * @param callback
 	 */
-	observe(obj, callback) {
-		function buildProxy(prefix, obj) {
+	observe (obj, callback) {
+		function buildProxy (prefix, obj) {
 			let changeHandler = {
 				get: (target, property) => {
-					const out = target[property];
+					const out = target[property]
 
 					if (out instanceof Object) {
-						return buildProxy(prefix + property + '.', out);
+						return buildProxy(prefix + property + '.', out)
 					}
 
-					return out;
+					return out
 				},
 				set: (target, property, value) => {
-					callback(prefix + property, value);
+					callback(prefix + property, value)
 
-					target[property] = value;
+					target[property] = value
 
-					return true;
+					return true
 				}
 			}
 
-			return new Proxy(obj, changeHandler);
+			return new Proxy(obj, changeHandler)
 		}
 
-		return buildProxy('', obj);
+		return buildProxy('', obj)
 	}
 }
