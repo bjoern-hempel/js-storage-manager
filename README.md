@@ -196,9 +196,9 @@ $ vi dist/index.html
 $ npm run start:dev
 ```
 
-All your changes are now under observation and will automatically be re-rendered in the `/dist` directory. Execute changes in `/src` and they will be reflected in http://localhost:8080.
+All your changes are now under observation and will automatically be re-rendered in the `/dist` directory. Make the changes in `/src` and paste them directly into your browser.
 
-Open your browser at: http://localhost:8080
+Open your browser at: http://localhost:8080 (to see the results)
 
 
 
