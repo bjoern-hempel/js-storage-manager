@@ -71,7 +71,7 @@ $ vi index.html
 
 ### npm
 
-#### The direct way (the old way)
+#### The direct way (the old javascript way)
 
 ```bash
 $ mkdir webproject && cd webproject
@@ -98,7 +98,7 @@ $ vi index.html
 </html>
 ```
 
-#### The webpack way (the modern way)
+#### The webpack way (the modern javascript way)
 
 ```bash
 $ mkdir webproject && cd webproject
