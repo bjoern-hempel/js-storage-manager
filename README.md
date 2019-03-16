@@ -95,19 +95,49 @@ Todo..
 
 ## Maintenance
 
+1. Checkout the repository
+
 ```bash
 $ git clone git@github.com:bjoern-hempel/js-storage-manager.git && cd js-storage-manager
 $ npm install
 ```
 
-1. Extend, fix bugs in classes below `/src` folder. 
-2. Write more tests below the `/test` folder.
-3. Run the tests.
+2. Extend, fix bugs in classes below `/src` folder. 
+3. Write more tests below the `/test` folder.
+4. Run the tests.
+
+```bash
+$ npm test
+```
+
+or
 
 ```bash
 $ npm run test:unit
 ```
 
+5. Change the version number
+
+```bash
+$ vi package.json
+```
+
+```text
+...
+"version": "0.0.14",
+...
+```
+
+```bash
+$ git tag v0.0.14
+$ git push origin v0.0.14
+```
+
+6. Publish on npm
+
+```bash
+$ npm publish
+```
 
 ## A. Authors
 
