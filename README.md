@@ -5,6 +5,10 @@ A library that makes the [WebStorage](https://en.wikipedia.org/wiki/Web_storage)
 ![npm](https://img.shields.io/npm/v/js-storage-manager.svg) ![NPM](https://img.shields.io/npm/l/js-storage-manager.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/js-storage-manager.svg)
 
 
+
+&nbsp;
+&nbsp;
+
 ## Install
 
 ### bower
@@ -30,6 +34,11 @@ or
 ```bash
 $ git clone git@github.com:bjoern-hempel/js-storage-manager.git
 ```
+
+
+
+&nbsp;
+&nbsp;
 
 ## Usage
 
@@ -189,6 +198,11 @@ $ npm run start:dev
 
 Open your browser at: http://localhost:8080
 
+
+
+&nbsp;
+&nbsp;
+
 ## Maintenance
 
 1. Checkout the repository
@@ -249,9 +263,18 @@ $ git push origin v0.0.14
 $ npm publish
 ```
 
+
+&nbsp;
+&nbsp;
+
 ## A. Authors
 
 * Björn Hempel <bjoern@hempel.li> - _Initial work_ - [https://github.com/bjoern-hempel](https://github.com/bjoern-hempel)
+
+
+
+&nbsp;
+&nbsp;
 
 ## B. License
 
