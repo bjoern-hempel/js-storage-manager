@@ -183,6 +183,8 @@ $ vi dist/index.html
 </html>
 ```
 
+Open your browser at: http://localhost:8080
+
 ## Maintenance
 
 1. Checkout the repository
