@@ -93,10 +93,34 @@ $ vi index.html
 
 ```bash
 $ mkdir webproject && cd webproject
-$ npm install js-storage-manager
-$ npm install webpack
-$ npm install webpack-cli
-$ npm install webpack-dev-server
+```
+
+```bash
+$ vi package.json
+```
+
+```json
+{
+  "name": "js-project",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "start:dev": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
+```
+
+```bash
+$ npm install js-storage-manager --save
+$ npm install webpack --save
+$ npm install webpack-cli --save
+$ npm install webpack-dev-server --save
 $ mkdir src
 $ vi src/index.js
 ```
@@ -123,7 +147,7 @@ document.body.appendChild(component());
 $ vi webpack.config.js
 ```
 
-```json
+```javascript
 const path = require('path');
 
 module.exports = {
@@ -140,6 +164,23 @@ module.exports = {
     port: 8080
   }
 };
+```
+
+```bash
+$ mkdir dist
+$ vi dist/index.html
+```
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <title>A simple js-storage-manager example</title>
+  </head>
+  <body>
+    <script src="main.js"></script>
+  </body>
+</html>
 ```
 
 ## Maintenance
