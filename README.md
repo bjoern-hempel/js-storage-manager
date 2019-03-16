@@ -60,10 +60,42 @@ $ vi index.html
 </html>
 ```
 
+### npm
+
+#### The direct way (the old way)
+
+```bash
+$ mkdir webproject && cd webproject
+$ npm install js-storage-manager
+$ vi index.html
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A simple js-storage-manager example</title>
+    <script src="node_modules/js-storage-manager/dist/storage-manager.min.js"></script>
+  </head>
+  <body>
+    <script>
+      var sm = new StorageManager('namespace');
+
+      sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}]);
+
+      document.write(JSON.stringify(sm.get('data')));
+    </script>
+  </body>
+</html>
+```
+
+#### The webpack way (the modern way)
+
+Todo..
 
 ## Maintenance
 
-
+Todo..
 
 ## A. Authors
 
