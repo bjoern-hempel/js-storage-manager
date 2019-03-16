@@ -1,6 +1,6 @@
 {
   "name": "js-storage-manager",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A library to store data within the web storage.",
   "scripts": {
     "build": "webpack --env=build",
@@ -20,15 +20,15 @@
     "session-storage"
   ],
   "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
     "mocha": "^6.0.2",
     "mock-local-storage": "^1.1.8",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "@babel/register": "^7.0.0"
   }
 }
