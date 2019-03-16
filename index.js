@@ -1,4 +1,4 @@
-const storage = require("./src/storage");
+const storage = require("./dist/storage");
 
 module.exports = storage
 
