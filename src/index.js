@@ -1,4 +1,4 @@
-const storage = require("./storage");
+const storage_manager = require("./storage-manager");
 
-module.exports = storage
+module.exports = storage_manager
 

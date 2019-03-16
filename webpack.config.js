@@ -3,8 +3,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
-    'storage': './src/storage.js',
-    'storage.min': './src/storage.js',
+    'storage-manager': './src/storage-manager.js',
+    'storage-manager.min': './src/storage-manager.js',
   },
   mode: 'development',
   devtool: 'source-map',
@@ -12,7 +12,7 @@ module.exports = {
     path: __dirname + '/dist',
     filename: '[name].js',
     libraryTarget: 'var',
-    library: 'Storage'
+    library: 'StorageManager'
   },
   optimization: {
     minimizer: [

@@ -8,7 +8,7 @@
 /* global describe, beforeEach, afterEach, localStorage, it */
 import 'mock-local-storage'
 
-let Storage = require('../src/storage')
+let StorageManager = require('../src/storage-manager')
 let assert = require('assert')
 
 const STORAGE_NAMESPACE = 'storageNamespace'
@@ -35,7 +35,7 @@ describe('export class Storage {}', () => {
 			let dataExpected = null
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			let returnData = s.get('data')
 
 			/* Assert */
@@ -47,7 +47,7 @@ describe('export class Storage {}', () => {
 			let dataExpected = [1, 2, 3]
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			let dataReturn = s.get('data', dataExpected)
 
 			/* Assert */
@@ -61,7 +61,7 @@ describe('export class Storage {}', () => {
 			let dataExpected = data1
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.set('data', data1)
 			let dataReturn = s.get('data', data2)
 
@@ -75,7 +75,7 @@ describe('export class Storage {}', () => {
 			let dataExpected = { 'data': data }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.set('data', data)
 			let dataReturn = s.getStorage()
 
@@ -94,7 +94,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = {}
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.initStorage()
 
 			/* Assert */
@@ -108,7 +108,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { data: data }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.set('data', data)
 
 			/* Assert */
@@ -121,7 +121,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { queue: [] }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.initQueue()
 
 			/* Assert */
@@ -135,7 +135,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { queue: [data] }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data)
 
 			/* Assert */
@@ -149,7 +149,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { queue: [data, data] }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data)
 			s.pushQueue(data)
 
@@ -163,7 +163,7 @@ describe('export class Storage {}', () => {
 			let numberExpected = 3
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data)
 			s.pushQueue(data)
 			s.pushQueue(data)
@@ -178,7 +178,7 @@ describe('export class Storage {}', () => {
 			let queueExpected = [data, data]
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data)
 			s.pushQueue(data)
 
@@ -193,7 +193,7 @@ describe('export class Storage {}', () => {
 			let data3 = { 'id': 3, 'name': 'Name 3' }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data1)
 			s.pushQueue(data2)
 			s.pushQueue(data3)
@@ -209,7 +209,7 @@ describe('export class Storage {}', () => {
 			let data3 = { 'id': 3, 'name': 'Name 3' }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data1)
 			s.pushQueue(data2)
 			s.pushQueue(data3)
@@ -226,7 +226,7 @@ describe('export class Storage {}', () => {
 			let queueExpected = [data2, data3]
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			s.pushQueue(data1)
 			s.pushQueue(data2)
 			s.pushQueue(data3)
@@ -248,7 +248,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { data: data }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			let observable = true
 			let storage = s.getStorage(observable)
 			storage.data = data /* auto save to localStorage */
@@ -265,7 +265,7 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { data: dataExpected }
 
 			/* Act */
-			let s = new Storage(STORAGE_NAMESPACE)
+			let s = new StorageManager(STORAGE_NAMESPACE)
 			let observable = true
 			let storage = s.getStorage(observable)
 			storage.data = data /* auto save to localStorage */
