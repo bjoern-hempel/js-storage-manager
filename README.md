@@ -91,7 +91,56 @@ $ vi index.html
 
 #### The webpack way (the modern way)
 
-Todo..
+```bash
+$ mkdir webproject && cd webproject
+$ npm install js-storage-manager
+$ npm install webpack
+$ npm install webpack-cli
+$ npm install webpack-dev-server
+$ mkdir src
+$ vi src/index.js
+```
+
+```javascript
+let StorageManager = require('js-storage-manager')
+
+let sm = new StorageManager('namespace')
+
+function component() {
+  let element = document.createElement('div');
+  
+  sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}]);
+
+  element.innerHTML = JSON.stringify(sm.get('data'));
+
+  return element;
+}
+
+document.body.appendChild(component());
+```
+
+```bash
+$ vi webpack.config.js
+```
+
+```json
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  watch: true,
+  mode: 'development',
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080
+  }
+};
+```
 
 ## Maintenance
 
