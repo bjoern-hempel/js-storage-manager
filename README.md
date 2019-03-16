@@ -54,7 +54,7 @@ $ vi index.html
 
       sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}]);
 
-      console.log(sm.get('data'));
+      document.write(JSON.stringify(sm.get('data')));
     </script>
   </body>
 </html>
