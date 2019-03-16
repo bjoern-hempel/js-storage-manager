@@ -52,7 +52,7 @@ $ vi index.html
     <script>
       var sm = new StorageManager('namespace');
 
-      sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}];
+      sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}]);
 
       console.log(sm.get('data'));
     </script>
