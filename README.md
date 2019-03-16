@@ -101,7 +101,7 @@ $ vi package.json
 
 ```json
 {
-  "name": "js-project",
+  "name": "js-storage-manager-test",
   "version": "1.0.0",
   "description": "",
   "private": true,
