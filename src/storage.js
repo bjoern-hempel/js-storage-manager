@@ -1,5 +1,3 @@
-const LS_STORAGE_KEY = 'storage'
-
 /**
  * Class to save data to localStorage.
  *
@@ -54,7 +52,11 @@ const LS_STORAGE_KEY = 'storage'
  * @author  Björn Hempel <bjoern@hempel.li>
  * @version 1.0 (2019-03-15)
  */
-export class Storage {
+"use strict"
+
+const LS_STORAGE_KEY = 'storage'
+
+class Storage {
 	constructor (area) {
 		this.ls = window.localStorage
 		this.area = area
@@ -332,3 +334,6 @@ export class Storage {
 		return buildProxy('', obj)
 	}
 }
+
+module.exports = Storage
+
