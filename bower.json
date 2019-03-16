@@ -1,0 +1,20 @@
+{
+  "name": "js-storage-manager",
+  "description": "A library to store data within the web storage.",
+  "main": "dist/storage-manager.js",
+  "authors": [
+    "Björn Hempel <bjoern@hempel.li>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web-storage",
+    "local-storage",
+    "javascript",
+    "session-storage"
+  ],
+  "homepage": "https://github.com/bjoern-hempel/js-storage-manager",
+  "ignore": [
+    "*",
+    "!dist/*"
+  ]
+}
