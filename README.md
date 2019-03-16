@@ -95,7 +95,19 @@ Todo..
 
 ## Maintenance
 
-Todo..
+```bash
+$ git clone git@github.com:bjoern-hempel/js-storage-manager.git && cd js-storage-manager
+$ npm install
+```
+
+1. Extend, fix bugs in classes below `/src` folder. 
+2. Write more tests below the `/test` folder.
+3. Run the tests.
+
+```bash
+$ npm run test:unit
+```
+
 
 ## A. Authors
 
