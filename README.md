@@ -116,7 +116,21 @@ or
 $ npm run test:unit
 ```
 
-5. Change the version number
+5. Build the `/dist` files
+
+```bash
+$ npm run build
+```
+
+6. Commit your changes
+
+```bash
+$ git add ...
+$ git commit -m "my bugfixes" .
+$ git push
+```
+
+7. Change the version number
 
 ```bash
 $ vi package.json
@@ -133,7 +147,7 @@ $ git tag v0.0.14
 $ git push origin v0.0.14
 ```
 
-6. Publish on npm
+8. Publish on npm
 
 ```bash
 $ npm publish
