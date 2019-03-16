@@ -1,6 +1,6 @@
 {
   "name": "js-storage-manager",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A library to store data within the web storage.",
   "scripts": {
     "test:unit": "mocha --require mock-local-storage --require @babel/register 'test/**/*.spec.js'"
