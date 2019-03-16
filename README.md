@@ -118,9 +118,9 @@ $ vi package.json
 
 ```bash
 $ npm install js-storage-manager --save
-$ npm install webpack --save
-$ npm install webpack-cli --save
-$ npm install webpack-dev-server --save
+$ npm install webpack --save-dev
+$ npm install webpack-cli --save-dev
+$ npm install webpack-dev-server --save-dev
 $ mkdir src
 $ vi src/index.js
 ```
@@ -181,6 +181,10 @@ $ vi dist/index.html
     <script src="main.js"></script>
   </body>
 </html>
+```
+
+```bash
+$ npm run start:dev
 ```
 
 Open your browser at: http://localhost:8080
