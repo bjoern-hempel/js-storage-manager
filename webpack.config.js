@@ -10,7 +10,9 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: __dirname + '/dist',
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'var',
+    library: 'Storage'
   },
   optimization: {
     minimizer: [
