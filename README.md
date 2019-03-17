@@ -303,8 +303,6 @@ storage.data = data_initial;
 
 ### How to create and use a queue list
 
-Attention: This area is under revision. See [#1](/../../issues/1)
-
 ```javascript
 var sm = new StorageManager('namespace');
 
@@ -335,8 +333,6 @@ var next_queue_item = qm.deleteNext();
 ```
 
 ### How to use your own queue namespace or multiple instances of a queue within a namespace
-
-Attention: This area is under revision. See [#1](/../../issues/1)
 
 ```javascript
 var sm = new StorageManager('namespace');
