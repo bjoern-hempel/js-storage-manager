@@ -231,6 +231,9 @@ $ vi index.html
 
 
 
+&nbsp;
+&nbsp;
+
 ## The next steps
 
 ### How to use the StorageManager in the easiest way
