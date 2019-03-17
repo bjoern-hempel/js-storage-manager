@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.16 (17/03/2019)
+#### New:
+
+* Adding "how to" items in the description
+---
+
 ## v0.0.15 (17/03/2019)
 #### New:
 
