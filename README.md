@@ -286,7 +286,7 @@ storage.data = data_initial;
 sm.setStorage(storage)
 ```
 
-### How the StorageManager saves changes to the storage itself
+### How to let the StorageManager automatically save changes to the storage data object in web storage
 
 ```javascript
 var sm = new StorageManager('namespace');
