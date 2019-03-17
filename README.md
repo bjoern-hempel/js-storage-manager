@@ -267,6 +267,21 @@ var data_from_web_storage_1 = sm_1.get('data');
 var data_from_web_storage_2 = sm_2.get('data');
 ```
 
+### How do I manage the storage myself?
+
+```javascript
+var sm = new StorageManager('namespace');
+var data_initial = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
+
+var storage = sm.getStorage();
+
+/* Do something with the data object. */
+storage.data = data_initial;
+
+/* Save the data object in WebStorage. */
+sm.setStorage(storage)
+```
+
 
 
 &nbsp;
