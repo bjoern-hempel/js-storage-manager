@@ -233,7 +233,7 @@ $ vi index.html
 
 ## The next steps
 
-### What is the easiest way to use StorageManager?
+### How to use the StorageManager in the easiest way
 
 ```javascript
 var sm = new StorageManager('namespace');
@@ -245,7 +245,7 @@ sm.set('data', data_initial);
 var data_from_web_storage = sm.get('data');
 ```
 
-### How do I use multiple namespaces?
+### How to use multiple namespaces
 
 ```javascript
 var namespace_1 = 'namespace1';
@@ -267,7 +267,7 @@ var data_from_web_storage_1 = sm_1.get('data');
 var data_from_web_storage_2 = sm_2.get('data');
 ```
 
-### How do I manage the storage myself?
+### How to manage the storage yourself
 
 ```javascript
 var sm = new StorageManager('namespace');
@@ -283,12 +283,12 @@ storage.data = data_initial;
 sm.setStorage(storage)
 ```
 
-### How does StorageManager automatically save the changed storage?
+### How the StorageManager saves changes to the storage itself
 
 ```javascript
 var sm = new StorageManager('namespace');
 var data_initial = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
-var observable = true;
+var observable = true; // <- important
 
 /* The returned storage data object is now of type "Proxy". */
 var storage = sm.getStorage(observable);
