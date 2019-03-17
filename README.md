@@ -307,6 +307,15 @@ $ npm publish
 &nbsp;
 &nbsp;
 
-## B. License
+## B. Changelog
+
+Changes are tracked as [GitHub releases](https://github.com/bjoern-hempel/js-storage-manager/releases).
+
+
+
+&nbsp;
+&nbsp;
+
+## C. License
 
 This library is licensed under the MIT License - see the [LICENSE.md](/LICENSE.md) file for details
