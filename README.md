@@ -312,7 +312,7 @@ var queue_data_1 = {id: 1, name: 'Name 1'};
 var queue_data_2 = {id: 2, name: 'Name 2'};
 
 /* Initialize the queue (optionally) */
-var qm = sm.initQueue('queue', true);
+var qm = sm.initQueue();
 
 /* Add records to the queue. The queue namespace used is 'queue'.
  * Attention. If LocalStorage is used, this value is added again and again. Use the Reset parameter within
@@ -340,28 +340,12 @@ Attention: This area is under revision. See [#1](/../../issues/1)
 
 ```javascript
 var sm = new StorageManager('namespace');
-var queue_data_1 = {[id: 1, name: 'Name 1']};
-var queue_data_2 = {[id: 2, name: 'Name 2']};
-var my_queue_namespace = 'my_queue'
+
+var queue_data_1 = {id: 1, name: 'Name 1'};
+var queue_data_2 = {id: 2, name: 'Name 2'};
 
 /* Initialize the queue (optionally) */
-sm.initQueue(my_queue_namespace);
-
-/* Add records to the queue. The queue namespace used is now 'my_queue'. */
-sm.pushQueue(queue_data_1, my_queue_namespace);
-sm.pushQueue(queue_data_2, my_queue_namespace);
-
-/* Get the number of queue items. */
-var number_of_queue_items = sm.getNumberOfQueuesItems(my_queue_namespace);
-
-/* Read the entire queue */
-var queue = sm.getQueue(my_queue_namespace);
-
-/* Get the next queue item (FIFO) */
-var next_queue_item = sm.getNextQueueItem(my_queue_namespace);
-
-/* Get the next queue entry and delete it. */
-var next_queue_item = sm.deleteNextQueueItem(my_queue_namespace);
+var qm = sm.initQueue('my_queue', true);
 ```
 
 ### How to get the LocalStorage area completely managed by the StorageManager
