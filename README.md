@@ -40,7 +40,7 @@ $ git clone git@github.com:bjoern-hempel/js-storage-manager.git
 &nbsp;
 &nbsp;
 
-## Usage
+## Getting started
 
 ### bower
 
