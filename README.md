@@ -237,13 +237,36 @@ $ vi index.html
 
 ```javascript
 var sm = new StorageManager('namespace');
-var data_initial = [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}];
+var data_initial = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
 
 /* save data_initial to localStorage.storage.namespace.data */
 sm.set('data', data_initial);
 
 var data_from_web_storage = sm.get('data');
 ```
+
+### How do I use multiple namespaces?
+
+```javascript
+var namespace_1 = 'namespace1';
+var namespace_2 = 'namespace2';
+
+var sm_1 = new StorageManager(namespace_1);
+var sm_2 = new StorageManager(namespace_2);
+
+var data_initial_1 = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
+var data_initial_2 = [{id: 3, name: 'Name 3'}, {id: 4, name: 'Name 4'}];
+
+/* save data_initial to localStorage.storage.namespace1.data */
+sm.set('data', data_initial_1);
+
+/* save data_initial to localStorage.storage.namespace2.data */
+sm.set('data', data_initial_2);
+
+var data_from_web_storage_1 = sm_1.get('data');
+var data_from_web_storage_2 = sm_2.get('data');
+```
+
 
 
 &nbsp;
