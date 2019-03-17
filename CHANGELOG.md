@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.15 (17/03/2019)
+#### New:
+
+* Add CHANGELOG.md to repository
+---
+
 ## v0.0.1 (17/03/2019)
 #### New:
 
