@@ -298,6 +298,33 @@ storage.data = data_initial;
 /* sm.setStorage(storage) is no longer needed. Changes are automatically saved in WebStorage. */
 ```
 
+### How to create and use a queue list
+
+```javascript
+var sm = new StorageManager('namespace');
+var queue_data_1 = {[id: 1, name: 'Name 1']};
+var queue_data_2 = {[id: 2, name: 'Name 2']};
+
+/* Initialize the queue (optionally) */
+sm.initQueue();
+
+/* Add records to the queue. */
+sm.pushQueue(queue_data_1);
+sm.pushQueue(queue_data_2);
+
+/* Get the number of queue items. */
+var number_of_queue_items = sm.getNumberOfQueuesItems();
+
+/* Read the entire queue */
+var queue = sm.getQueue();
+
+/* Get the next queue item (FIFO) */
+var next_queue_item = sm.getNextQueueItem();
+
+/* Get the next queue entry and delete it. */
+var next_queue_item = s.deleteNextQueueItem();
+```
+
 
 
 &nbsp;
