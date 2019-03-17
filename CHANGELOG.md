@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.0.17 (18/03/2019)
+#### New:
+
+* Add a queue management class into its own object (See #1)
+
+---
+
 ## v0.0.16 (17/03/2019)
 #### New:
 
