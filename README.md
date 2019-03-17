@@ -231,6 +231,21 @@ $ vi index.html
 
 
 
+## The next steps
+
+### What is the easiest way to use StorageManager?
+
+```javascript
+var sm = new StorageManager('namespace');
+var data_initial = [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}];
+
+/* save data_initial to localStorage.storage.namespace.data */
+sm.set('data', data_initial);
+
+var data_from_web_storage = sm.get('data');
+```
+
+
 &nbsp;
 &nbsp;
 
