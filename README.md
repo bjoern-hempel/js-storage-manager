@@ -200,6 +200,35 @@ All your changes are now under observation and will automatically be re-rendered
 
 Open your browser at: http://localhost:8080 (to see the results)
 
+### Git
+
+```bash
+$ mkdir webproject && cd webproject
+$ mkdir vendor && cd vendor
+$ git clone https://github.com/bjoern-hempel/js-storage-manager.git
+$ cd ..
+$ vi index.html
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A simple js-storage-manager example</title>
+    <script src="vendor/js-storage-manager/dist/storage-manager.min.js"></script>
+  </head>
+  <body>
+    <script>
+      var sm = new StorageManager('namespace');
+
+      sm.set('data', [{id: 123, name: 'Name 1'}, {id: 123, name: 'Name 2'}]);
+
+      document.write(JSON.stringify(sm.get('data')));
+    </script>
+  </body>
+</html>
+```
+
 
 
 &nbsp;
