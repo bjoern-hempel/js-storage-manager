@@ -1,3 +1,9 @@
+# Javascript Storage Manager
+
+## Getting started
+
+### npm
+
 #### The webpack way (the modern javascript way)
 
 ```bash
