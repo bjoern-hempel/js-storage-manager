@@ -300,6 +300,8 @@ storage.data = data_initial;
 
 ### How to create and use a queue list
 
+Attention: This area is under revision. See #1
+
 ```javascript
 var sm = new StorageManager('namespace');
 var queue_data_1 = {[id: 1, name: 'Name 1']};
@@ -322,10 +324,12 @@ var queue = sm.getQueue();
 var next_queue_item = sm.getNextQueueItem();
 
 /* Get the next queue entry and delete it. */
-var next_queue_item = s.deleteNextQueueItem();
+var next_queue_item = ms.deleteNextQueueItem();
 ```
 
 ### How to use your own queue namespace
+
+Attention: This area is under revision. See #1
 
 ```javascript
 var sm = new StorageManager('namespace');
@@ -336,7 +340,7 @@ var my_queue_namespace = 'my_queue'
 /* Initialize the queue (optionally) */
 sm.initQueue(my_queue_namespace);
 
-/* Add records to the queue. The queue namespace used is 'queue'. */
+/* Add records to the queue. The queue namespace used is now 'my_queue'. */
 sm.pushQueue(queue_data_1, my_queue_namespace);
 sm.pushQueue(queue_data_2, my_queue_namespace);
 
@@ -350,7 +354,7 @@ var queue = sm.getQueue(my_queue_namespace);
 var next_queue_item = sm.getNextQueueItem(my_queue_namespace);
 
 /* Get the next queue entry and delete it. */
-var next_queue_item = s.deleteNextQueueItem(my_queue_namespace);
+var next_queue_item = sm.deleteNextQueueItem(my_queue_namespace);
 ```
 
 ### How to get the LocalStorage area completely managed by the StorageManager
