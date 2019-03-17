@@ -300,7 +300,11 @@ $ npm publish
 $ gren release
 ```
 
-Adapt the changelog text to github if necessary: [changelog](https://github.com/bjoern-hempel/js-storage-manager/releases)
+Adapt the changelog text to github if necessary: [changelog](https://github.com/bjoern-hempel/js-storage-manager/releases). Show all commits:
+
+```bash
+$ git log --oneline --decorate
+```
 
 10. Update [CHANGELOG.md](/CHANGELOG.md)
 
