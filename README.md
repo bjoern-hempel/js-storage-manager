@@ -353,6 +353,15 @@ var next_queue_item = sm.getNextQueueItem(my_queue_namespace);
 var next_queue_item = s.deleteNextQueueItem(my_queue_namespace);
 ```
 
+### How to get the LocalStorage area completely managed by the StorageManager
+
+```javascript
+var sm = new StorageManager('namespace');
+
+/* Returns the LocalStorage area as a ready-parsed object. */
+var local_storage_managed_by_sm = sm.getLocalStorage();
+```
+
 
 
 &nbsp;
