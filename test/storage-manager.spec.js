@@ -135,11 +135,12 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { queue: [data] }
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data)
 
 			/* Assert */
-			assert.deepStrictEqual(s.getLocalStorage(), localStorageExpected)
+			assert.deepStrictEqual(sm.getLocalStorage(), localStorageExpected)
 		})
 
 		it('Test Storage.addQueue (two entries).', () => {
@@ -149,12 +150,13 @@ describe('export class Storage {}', () => {
 			localStorageExpected[STORAGE_NAMESPACE] = { queue: [data, data] }
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data)
-			s.pushQueue(data)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data)
+			qm.push(data)
 
 			/* Assert */
-			assert.deepStrictEqual(s.getLocalStorage(), localStorageExpected)
+			assert.deepStrictEqual(sm.getLocalStorage(), localStorageExpected)
 		})
 
 		it('Test Storage.getNumberOfQueuesItems (three entries).', () => {
@@ -163,13 +165,14 @@ describe('export class Storage {}', () => {
 			let numberExpected = 3
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data)
-			s.pushQueue(data)
-			s.pushQueue(data)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data)
+			qm.push(data)
+			qm.push(data)
 
 			/* Assert */
-			assert.equal(s.getNumberOfQueuesItems(), numberExpected)
+			assert.equal(qm.getNumber(), numberExpected)
 		})
 
 		it('Test Storage.getQueue (two entries).', () => {
@@ -178,12 +181,13 @@ describe('export class Storage {}', () => {
 			let queueExpected = [data, data]
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data)
-			s.pushQueue(data)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data)
+			qm.push(data)
 
 			/* Assert */
-			assert.deepStrictEqual(s.getQueue(), queueExpected)
+			assert.deepStrictEqual(qm.getAll(), queueExpected)
 		})
 
 		it('Test Storage.getNextQueueEntry.', () => {
@@ -193,13 +197,14 @@ describe('export class Storage {}', () => {
 			let data3 = { 'id': 3, 'name': 'Name 3' }
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data1)
-			s.pushQueue(data2)
-			s.pushQueue(data3)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data1)
+			qm.push(data2)
+			qm.push(data3)
 
 			/* Assert */
-			assert.deepStrictEqual(s.getNextQueueItem(), data1)
+			assert.deepStrictEqual(qm.getNext(), data1)
 		})
 
 		it('Test Storage.deleteNextQueueEntry (get deleted entry).', () => {
@@ -209,13 +214,14 @@ describe('export class Storage {}', () => {
 			let data3 = { 'id': 3, 'name': 'Name 3' }
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data1)
-			s.pushQueue(data2)
-			s.pushQueue(data3)
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data1)
+			qm.push(data2)
+			qm.push(data3)
 
 			/* Assert */
-			assert.deepStrictEqual(s.deleteNextQueueItem(), data1)
+			assert.deepStrictEqual(qm.deleteNext(), data1)
 		})
 
 		it('Test Storage.deleteNextQueueEntry (check new queue list).', () => {
@@ -226,14 +232,15 @@ describe('export class Storage {}', () => {
 			let queueExpected = [data2, data3]
 
 			/* Act */
-			let s = new StorageManager(STORAGE_NAMESPACE)
-			s.pushQueue(data1)
-			s.pushQueue(data2)
-			s.pushQueue(data3)
-			s.deleteNextQueueItem()
+			let sm = new StorageManager(STORAGE_NAMESPACE)
+			let qm = sm.initQueue()
+			qm.push(data1)
+			qm.push(data2)
+			qm.push(data3)
+			qm.deleteNext()
 
 			/* Assert */
-			assert.deepStrictEqual(s.getQueue(), queueExpected)
+			assert.deepStrictEqual(qm.getAll(), queueExpected)
 		})
 	})
 

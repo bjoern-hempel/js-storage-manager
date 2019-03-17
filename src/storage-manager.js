@@ -197,107 +197,8 @@ class StorageManager {
 	 *
 	 * @param key
 	 */
-	initQueue (key = 'queue') {
-		let values = this.get(key, [])
-
-		if (!Array.isArray(values)) {
-			console.error('initQueue: The given values must be an array!')
-			return
-		}
-
-		this.set(key, values)
-	}
-
-	/**
-	 * Returns all entries of the queue.
-	 *
-	 * @param key
-	 */
-	getQueue (key = 'queue') {
-		this.initQueue(key)
-
-		let values = this.get(key, [])
-
-		if (!Array.isArray(values)) {
-			return []
-		}
-
-		return values
-	}
-
-	/**
-	 * Adds the given element to the queue.
-	 *
-	 * @param value
-	 * @param key
-	 */
-	pushQueue (value, key = 'queue') {
-		this.initQueue(key)
-
-		let values = this.get(key, [])
-
-		if (!Array.isArray(values)) {
-			console.error('pushQueue: The given values must be an array!')
-			return
-		}
-
-		values.push(value)
-
-		this.set(key, values)
-	}
-
-	/**
-	 * Gets the number of queue entries.
-	 *
-	 * @param value
-	 * @param key
-	 */
-	getNumberOfQueuesItems (key = 'queue') {
-		return this.getQueue(key).length
-	}
-
-	/**
-	 * Gets the next queue entry (FIFO).
-	 *
-	 * @param value
-	 * @param key
-	 */
-	getNextQueueItem (key = 'queue') {
-		this.initQueue(key)
-
-		let values = this.get(key, [])
-
-		if (!Array.isArray(values)) {
-			return null
-		}
-
-		if (this.getNumberOfQueuesItems(key) <= 0) {
-			return null
-		}
-
-		return values[0]
-	}
-
-	/**
-	 * Deletes the next queue entry and returns it (FIFO).
-	 *
-	 * @param value
-	 * @param key
-	 */
-	deleteNextQueueItem (key = 'queue') {
-		this.initQueue(key)
-
-		let values = this.get(key, [])
-
-		if (!Array.isArray(values)) {
-			return null
-		}
-
-		if (this.getNumberOfQueuesItems(key) <= 0) {
-			return null
-		}
-
-		return values.shift()
+	initQueue (key = 'queue', reset = false) {
+		return new QueueManager(this, key, reset)
 	}
 
 	/**
@@ -335,5 +236,123 @@ class StorageManager {
 	}
 }
 
-module.exports = StorageManager
+class QueueManager {
+	constructor (sm, key = 'queue', reset = false) {
+		this.sm = sm
+		this.key = key
 
+		this.init(reset)
+	}
+
+	/**
+	 * Initialize the queue.
+	 */
+	init (reset = false) {
+		if (reset) {
+			this.sm.set(this.key, [])
+		}
+
+		let values = this.sm.get(this.key, [])
+
+		if (!Array.isArray(values)) {
+			console.error('initQueue: The given values must be an array!')
+			return
+		}
+
+		this.sm.set(this.key, values)
+	}
+
+	/**
+	 * Returns all entries of the queue.
+	 *
+	 * @param key
+	 */
+	getAll () {
+		this.init()
+
+		let values = this.sm.get(this.key, [])
+
+		if (!Array.isArray(values)) {
+			return []
+		}
+
+		return values
+	}
+
+	/**
+	 * Adds the given element to the queue.
+	 *
+	 * @param value
+	 * @param key
+	 */
+	push (value) {
+		this.init()
+
+		let values = this.sm.get(this.key, [])
+
+		if (!Array.isArray(values)) {
+			console.error('pushQueue: The given values must be an array!')
+			return
+		}
+
+		values.push(value)
+
+		this.sm.set(this.key, values)
+	}
+
+	/**
+	 * Gets the number of queue entries.
+	 *
+	 * @param value
+	 * @param key
+	 */
+	getNumber () {
+		return this.getAll().length
+	}
+
+	/**
+	 * Gets the next queue entry (FIFO).
+	 *
+	 * @param value
+	 * @param key
+	 */
+	getNext (key = 'queue') {
+		this.init()
+
+		let values = this.sm.get(this.key, [])
+
+		if (!Array.isArray(values)) {
+			return null
+		}
+
+		if (this.getNumber() <= 0) {
+			return null
+		}
+
+		return values[0]
+	}
+
+	/**
+	 * Deletes the next queue entry and returns it (FIFO).
+	 *
+	 * @param value
+	 * @param key
+	 */
+	deleteNext (key = 'queue') {
+		this.init()
+
+		let values = this.sm.get(key, [])
+
+		if (!Array.isArray(values)) {
+			return null
+		}
+
+		if (this.getNumber() <= 0) {
+			return null
+		}
+
+		return values.shift()
+	}
+}
+
+module.exports = StorageManager
