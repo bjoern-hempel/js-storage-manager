@@ -1,6 +1,6 @@
 # Javascript Storage Manager
 
-A library that makes the [WebStorage](https://en.wikipedia.org/wiki/Web_storage) easy to use: `localStorage`, `sessionStorage`  and Cookies (`sessionStorage` and Cookies are in progress: [#2](/../../issues/2), [#3](/../../issues/3)).
+A library that makes the [WebStorage](https://en.wikipedia.org/wiki/Web_storage) easy to use: `localStorage`, `sessionStorage`  and `Cookies` (`sessionStorage` and `Cookies` are in progress: [#2](/../../issues/2), [#3](/../../issues/3)).
 
 ![npm](https://img.shields.io/npm/v/js-storage-manager.svg) ![NPM](https://img.shields.io/npm/l/js-storage-manager.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/js-storage-manager.svg)
 
