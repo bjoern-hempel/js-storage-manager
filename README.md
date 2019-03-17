@@ -273,13 +273,29 @@ var data_from_web_storage_2 = sm_2.get('data');
 var sm = new StorageManager('namespace');
 var data_initial = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
 
+/* Get the storage data object. */
 var storage = sm.getStorage();
 
 /* Do something with the data object. */
 storage.data = data_initial;
 
-/* Save the data object in WebStorage. */
+/* Manually save the data object in WebStorage. */
 sm.setStorage(storage)
+```
+
+### How does StorageManager automatically save the changed storage?
+
+```javascript
+var sm = new StorageManager('namespace');
+var data_initial = [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}];
+var observable = true;
+
+/* The returned storage data object is now of type "Proxy". */
+var storage = sm.getStorage(observable);
+
+/* Do something with the data object. */
+storage.data = data_initial;
+/* sm.setStorage(storage) is no longer needed. Changes are automatically saved in WebStorage. */
 ```
 
 
