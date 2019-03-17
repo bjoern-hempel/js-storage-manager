@@ -308,7 +308,7 @@ var queue_data_2 = {[id: 2, name: 'Name 2']};
 /* Initialize the queue (optionally) */
 sm.initQueue();
 
-/* Add records to the queue. */
+/* Add records to the queue. The queue namespace used is 'queue'. */
 sm.pushQueue(queue_data_1);
 sm.pushQueue(queue_data_2);
 
@@ -323,6 +323,34 @@ var next_queue_item = sm.getNextQueueItem();
 
 /* Get the next queue entry and delete it. */
 var next_queue_item = s.deleteNextQueueItem();
+```
+
+### How to use your own queue namespace
+
+```javascript
+var sm = new StorageManager('namespace');
+var queue_data_1 = {[id: 1, name: 'Name 1']};
+var queue_data_2 = {[id: 2, name: 'Name 2']};
+var my_queue_namespace = 'my_queue'
+
+/* Initialize the queue (optionally) */
+sm.initQueue(my_queue_namespace);
+
+/* Add records to the queue. The queue namespace used is 'queue'. */
+sm.pushQueue(queue_data_1, my_queue_namespace);
+sm.pushQueue(queue_data_2, my_queue_namespace);
+
+/* Get the number of queue items. */
+var number_of_queue_items = sm.getNumberOfQueuesItems(my_queue_namespace);
+
+/* Read the entire queue */
+var queue = sm.getQueue(my_queue_namespace);
+
+/* Get the next queue item (FIFO) */
+var next_queue_item = sm.getNextQueueItem(my_queue_namespace);
+
+/* Get the next queue entry and delete it. */
+var next_queue_item = s.deleteNextQueueItem(my_queue_namespace);
 ```
 
 
