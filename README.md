@@ -307,27 +307,31 @@ Attention: This area is under revision. See [#1](/../../issues/1)
 
 ```javascript
 var sm = new StorageManager('namespace');
-var queue_data_1 = {[id: 1, name: 'Name 1']};
-var queue_data_2 = {[id: 2, name: 'Name 2']};
+
+var queue_data_1 = {id: 1, name: 'Name 1'};
+var queue_data_2 = {id: 2, name: 'Name 2'};
 
 /* Initialize the queue (optionally) */
-sm.initQueue();
+var qm = sm.initQueue('queue', true);
 
-/* Add records to the queue. The queue namespace used is 'queue'. */
-sm.pushQueue(queue_data_1);
-sm.pushQueue(queue_data_2);
+/* Add records to the queue. The queue namespace used is 'queue'.
+ * Attention. If LocalStorage is used, this value is added again and again. Use the Reset parameter within
+ * initQueue to clear the persistent memory before.
+ */
+qm.push(queue_data_1);
+qm.push(queue_data_2);
 
 /* Get the number of queue items. */
-var number_of_queue_items = sm.getNumberOfQueuesItems();
+var number_of_queue_items = qm.getNumber();
 
 /* Read the entire queue */
-var queue = sm.getQueue();
+var queue = qm.getAll();
 
 /* Get the next queue item (FIFO) */
-var next_queue_item = sm.getNextQueueItem();
+var next_queue_item = qm.getNext();
 
 /* Get the next queue entry and delete it. */
-var next_queue_item = ms.deleteNextQueueItem();
+var next_queue_item = qm.deleteNext();
 ```
 
 ### How to use your own queue namespace
