@@ -100,7 +100,7 @@ $ vi index.html
 
 #### The webpack way (the modern javascript way)
 
-If you are interested to use this library on the modern javascript way, see [here](md/the_webpack_way.md)
+If you are interested to use this library on the modern javascript way, see [here](md/the_webpack_way.md).
 
 ### Git
 
