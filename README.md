@@ -300,7 +300,7 @@ storage.data = data_initial;
 
 ### How to create and use a queue list
 
-Attention: This area is under revision. See #1
+Attention: This area is under revision. See [#1](/../../issues/1)
 
 ```javascript
 var sm = new StorageManager('namespace');
@@ -329,7 +329,7 @@ var next_queue_item = ms.deleteNextQueueItem();
 
 ### How to use your own queue namespace
 
-Attention: This area is under revision. See #1
+Attention: This area is under revision. See [#1](/../../issues/1)
 
 ```javascript
 var sm = new StorageManager('namespace');
