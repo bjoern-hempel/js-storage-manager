@@ -309,7 +309,7 @@ $ npm publish
 
 ## B. Changelog
 
-Changes are tracked as [GitHub releases](https://github.com/bjoern-hempel/js-storage-manager/releases).
+Changes are tracked as [GitHub releases](https://github.com/bjoern-hempel/js-storage-manager/releases) or in reverse order [here](/CHANGELOG.md).
 
 
 
