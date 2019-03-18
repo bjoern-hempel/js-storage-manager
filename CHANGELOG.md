@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.0.18 (18/03/2019)
+#### New:
+
+* [**closed**] Build the queue management area into its own object. [#1](https://github.com/bjoern-hempel/js-storage-manager/issues/1)
+* Tidy up the documentation.
+
+---
+
 ## v0.0.17 (18/03/2019)
 #### New:
 
