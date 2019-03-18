@@ -304,7 +304,7 @@ $ vi package.json
 7. Commit your changes
 
 ```bash
-$ git add ...
+$ git add [file1] [file2] [etc.]
 $ git commit -m "my bugfixes" .
 $ git push
 ```
