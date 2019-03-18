@@ -289,15 +289,7 @@ $ npm run test:unit
 $ npm run build
 ```
 
-6. Commit your changes
-
-```bash
-$ git add ...
-$ git commit -m "my bugfixes" .
-$ git push
-```
-
-7. Change the version number
+6. Change the version number
 
 ```bash
 $ vi package.json
@@ -309,15 +301,19 @@ $ vi package.json
 ...
 ```
 
+7. Commit your changes
+
+```bash
+$ git add ...
+$ git commit -m "my bugfixes" .
+$ git push
+```
+
+8. Tag your version
+
 ```bash
 $ git tag v0.0.14
 $ git push origin v0.0.14
-```
-
-8. Publish to npm
-
-```bash
-$ npm publish
 ```
 
 9. Create Release
@@ -336,6 +332,12 @@ $ git log --oneline --decorate
 
 ```bash
 $ gren changelog --override
+```
+
+11. Publish to npm
+
+```bash
+$ npm publish
 ```
 
 
