@@ -111,4 +111,4 @@ Open your browser at: http://localhost:8080 (to see the results)
 &nbsp;
 &nbsp;
 
-Go back to the [readme page](../README.md#user-content-the-webpack-way-the-modern-javascript-way)
+Go back to the [README.md page](../README.md#user-content-the-webpack-way-the-modern-javascript-way)
