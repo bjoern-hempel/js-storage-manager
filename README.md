@@ -332,6 +332,8 @@ $ git log --oneline --decorate
 
 ```bash
 $ gren changelog --override
+$ git commit -m "Change changelog" .
+$ git push
 ```
 
 11. Publish to npm
