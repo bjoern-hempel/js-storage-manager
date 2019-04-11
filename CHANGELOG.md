@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.19 (11/04/2019)
+*No changelog for this release.*
+
+---
+
 ## v0.0.18 (18/03/2019)
 #### New:
 
