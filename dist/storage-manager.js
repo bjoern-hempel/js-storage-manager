@@ -151,309 +151,357 @@ var StorageManager =
  */
 
 
-const LS_STORAGE_KEY = 'storage'
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-class StorageManager {
-	constructor (area) {
-		this.ls = window.localStorage
-		this.area = area
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-		this.initLocalStorage()
-	}
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-	/**
-	 * Initializes the entire "LocalStorage" storage.
-	 *
-	 * @param defaultValue
-	 */
-	initLocalStorage (defaultValue = {}) {
-		if (this.ls.getItem(LS_STORAGE_KEY) === null) {
-			this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(defaultValue))
-		}
-	}
+var LS_STORAGE_KEY = 'storage';
 
-	/**
-	 * Returns the entire content of the storage (in parsed state).
-	 *
-	 * @returns {any}
-	 */
-	getLocalStorage () {
-		this.initLocalStorage()
+var StorageManager =
+/*#__PURE__*/
+function () {
+  function StorageManager(area) {
+    _classCallCheck(this, StorageManager);
 
-		return JSON.parse(this.ls.getItem(LS_STORAGE_KEY))
-	}
+    this.ls = window.localStorage;
+    this.area = area;
+    this.initLocalStorage();
+  }
+  /**
+   * Initializes the entire "LocalStorage" storage.
+   *
+   * @param defaultValue
+   */
 
-	/**
-	 * Sets the entire storage within the LocalStorage.
-	 *
-	 * @param value
-	 */
-	setLocalStorage (value) {
-		this.initLocalStorage()
 
-		this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(value))
-	}
+  _createClass(StorageManager, [{
+    key: "initLocalStorage",
+    value: function initLocalStorage() {
+      var defaultValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-	/**
-	 * Initialize an area of the storage.
-	 *
-	 * @param defaultValue
-	 * @returns {*}
-	 */
-	initStorage (defaultValue = {}) {
-		let localStorage = this.getLocalStorage()
+      if (this.ls.getItem(LS_STORAGE_KEY) === null) {
+        this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(defaultValue));
+      }
+    }
+    /**
+     * Returns the entire content of the storage (in parsed state).
+     *
+     * @returns {any}
+     */
 
-		if (!localStorage.hasOwnProperty(this.area)) {
-			this.setStorage(defaultValue)
-		}
+  }, {
+    key: "getLocalStorage",
+    value: function getLocalStorage() {
+      this.initLocalStorage();
+      return JSON.parse(this.ls.getItem(LS_STORAGE_KEY));
+    }
+    /**
+     * Sets the entire storage within the LocalStorage.
+     *
+     * @param value
+     */
 
-		if (typeof this.storage === 'undefined') {
-			this.storage = localStorage[this.area]
-		}
-	}
+  }, {
+    key: "setLocalStorage",
+    value: function setLocalStorage(value) {
+      this.initLocalStorage();
+      this.ls.setItem(LS_STORAGE_KEY, JSON.stringify(value));
+    }
+    /**
+     * Initialize an area of the storage.
+     *
+     * @param defaultValue
+     * @returns {*}
+     */
 
-	/**
-	 * Returns an area of the storage.
-	 *
-	 * @returns {*}
-	 */
-	getStorage (observable = false) {
-		this.initStorage()
+  }, {
+    key: "initStorage",
+    value: function initStorage() {
+      var defaultValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var localStorage = this.getLocalStorage();
 
-		if (observable) {
-			return this.observe(
-				this.storage,
-				(property, value) => {
-					let data = this.storage
+      if (!localStorage.hasOwnProperty(this.area)) {
+        this.setStorage(defaultValue);
+      }
 
-					let properties = property.split('.')
-					let lastProperty = properties.pop()
+      if (typeof this.storage === 'undefined') {
+        this.storage = localStorage[this.area];
+      }
+    }
+    /**
+     * Returns an area of the storage.
+     *
+     * @returns {*}
+     */
 
-					/* Iterate through given properties. */
-					properties.forEach(function (key) {
-						data = data[key]
-					})
+  }, {
+    key: "getStorage",
+    value: function getStorage() {
+      var _this = this;
 
-					data[lastProperty] = value
+      var observable = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      this.initStorage();
 
-					this.setStorage(this.storage)
-				}
-			)
-		}
+      if (observable) {
+        return this.observe(this.storage, function (property, value) {
+          var data = _this.storage;
+          var properties = property.split('.');
+          var lastProperty = properties.pop();
+          /* Iterate through given properties. */
 
-		return this.storage
-	}
+          properties.forEach(function (key) {
+            data = data[key];
+          });
+          data[lastProperty] = value;
 
-	/**
-	 * Sets an area of the storage with value.
-	 *
-	 * @param storage
-	 */
-	setStorage (storage) {
-		let localStorage = this.getLocalStorage()
+          _this.setStorage(_this.storage);
+        });
+      }
 
-		localStorage[this.area] = storage
+      return this.storage;
+    }
+    /**
+     * Sets an area of the storage with value.
+     *
+     * @param storage
+     */
 
-		this.storage = storage
+  }, {
+    key: "setStorage",
+    value: function setStorage(storage) {
+      var localStorage = this.getLocalStorage();
+      localStorage[this.area] = storage;
+      this.storage = storage;
+      this.setLocalStorage(localStorage);
+    }
+    /**
+     * Gets a key from the storage (this.area).
+     *
+     * @param key
+     * @returns {*}
+     */
 
-		this.setLocalStorage(localStorage)
-	}
+  }, {
+    key: "get",
+    value: function get(key) {
+      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var observable = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var storageArea = this.getStorage(observable);
 
-	/**
-	 * Gets a key from the storage (this.area).
-	 *
-	 * @param key
-	 * @returns {*}
-	 */
-	get (key, defaultValue = null, observable = false) {
-		let storageArea = this.getStorage(observable)
+      if (!storageArea.hasOwnProperty(key)) {
+        return defaultValue;
+      }
 
-		if (!storageArea.hasOwnProperty(key)) {
-			return defaultValue
-		}
+      return storageArea[key];
+    }
+    /**
+     * Sets a key within the storage (this.area).
+     *
+     * @param key
+     * @param value
+     */
 
-		return storageArea[key]
-	}
+  }, {
+    key: "set",
+    value: function set(key, value) {
+      var storageArea = this.getStorage();
+      storageArea[key] = value;
+      this.setStorage(storageArea);
+    }
+    /**
+     * Initialize a queue.
+     *
+     * @param key
+     */
 
-	/**
-	 * Sets a key within the storage (this.area).
-	 *
-	 * @param key
-	 * @param value
-	 */
-	set (key, value) {
-		let storageArea = this.getStorage()
+  }, {
+    key: "initQueue",
+    value: function initQueue() {
+      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'queue';
+      var reset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return new QueueManager(this, key, reset);
+    }
+    /**
+     * Adds magic getters and setter methods to the given object to be able to react to changes with a
+     * callback function.
+     *
+     * @param obj
+     * @param callback
+     */
 
-		storageArea[key] = value
+  }, {
+    key: "observe",
+    value: function observe(obj, callback) {
+      function buildProxy(prefix, obj) {
+        var changeHandler = {
+          get: function get(target, property) {
+            var out = target[property];
 
-		this.setStorage(storageArea)
-	}
+            if (out instanceof Object) {
+              return buildProxy(prefix + property + '.', out);
+            }
 
-	/**
-	 * Initialize a queue.
-	 *
-	 * @param key
-	 */
-	initQueue (key = 'queue', reset = false) {
-		return new QueueManager(this, key, reset)
-	}
+            return out;
+          },
+          set: function set(target, property, value) {
+            callback(prefix + property, value);
+            target[property] = value;
+            return true;
+          }
+        };
+        return new Proxy(obj, changeHandler);
+      }
 
-	/**
-	 * Adds magic getters and setter methods to the given object to be able to react to changes with a
-	 * callback function.
-	 *
-	 * @param obj
-	 * @param callback
-	 */
-	observe (obj, callback) {
-		function buildProxy (prefix, obj) {
-			let changeHandler = {
-				get: (target, property) => {
-					const out = target[property]
+      return buildProxy('', obj);
+    }
+  }]);
 
-					if (out instanceof Object) {
-						return buildProxy(prefix + property + '.', out)
-					}
+  return StorageManager;
+}();
 
-					return out
-				},
-				set: (target, property, value) => {
-					callback(prefix + property, value)
+var QueueManager =
+/*#__PURE__*/
+function () {
+  function QueueManager(sm) {
+    var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'queue';
+    var reset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-					target[property] = value
+    _classCallCheck(this, QueueManager);
 
-					return true
-				}
-			}
+    this.sm = sm;
+    this.key = key;
+    this.init(reset);
+  }
+  /**
+   * Initialize the queue.
+   */
 
-			return new Proxy(obj, changeHandler)
-		}
 
-		return buildProxy('', obj)
-	}
-}
+  _createClass(QueueManager, [{
+    key: "init",
+    value: function init() {
+      var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
-class QueueManager {
-	constructor (sm, key = 'queue', reset = false) {
-		this.sm = sm
-		this.key = key
+      if (reset) {
+        this.sm.set(this.key, []);
+      }
 
-		this.init(reset)
-	}
+      var values = this.sm.get(this.key, []);
 
-	/**
-	 * Initialize the queue.
-	 */
-	init (reset = false) {
-		if (reset) {
-			this.sm.set(this.key, [])
-		}
+      if (!Array.isArray(values)) {
+        console.error('initQueue: The given values must be an array!');
+        return;
+      }
 
-		let values = this.sm.get(this.key, [])
+      this.sm.set(this.key, values);
+    }
+    /**
+     * Returns all entries of the queue.
+     *
+     * @param key
+     */
 
-		if (!Array.isArray(values)) {
-			console.error('initQueue: The given values must be an array!')
-			return
-		}
+  }, {
+    key: "getAll",
+    value: function getAll() {
+      this.init();
+      var values = this.sm.get(this.key, []);
 
-		this.sm.set(this.key, values)
-	}
+      if (!Array.isArray(values)) {
+        return [];
+      }
 
-	/**
-	 * Returns all entries of the queue.
-	 *
-	 * @param key
-	 */
-	getAll () {
-		this.init()
+      return values;
+    }
+    /**
+     * Adds the given element to the queue.
+     *
+     * @param value
+     * @param key
+     */
 
-		let values = this.sm.get(this.key, [])
+  }, {
+    key: "push",
+    value: function push(value) {
+      this.init();
+      var values = this.sm.get(this.key, []);
 
-		if (!Array.isArray(values)) {
-			return []
-		}
+      if (!Array.isArray(values)) {
+        console.error('pushQueue: The given values must be an array!');
+        return;
+      }
 
-		return values
-	}
+      values.push(value);
+      this.sm.set(this.key, values);
+    }
+    /**
+     * Gets the number of queue entries.
+     *
+     * @param value
+     * @param key
+     */
 
-	/**
-	 * Adds the given element to the queue.
-	 *
-	 * @param value
-	 * @param key
-	 */
-	push (value) {
-		this.init()
+  }, {
+    key: "getNumber",
+    value: function getNumber() {
+      return this.getAll().length;
+    }
+    /**
+     * Gets the next queue entry (FIFO).
+     *
+     * @param value
+     * @param key
+     */
 
-		let values = this.sm.get(this.key, [])
+  }, {
+    key: "getNext",
+    value: function getNext() {
+      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'queue';
+      this.init();
+      var values = this.sm.get(this.key, []);
 
-		if (!Array.isArray(values)) {
-			console.error('pushQueue: The given values must be an array!')
-			return
-		}
+      if (!Array.isArray(values)) {
+        return null;
+      }
 
-		values.push(value)
+      if (this.getNumber() <= 0) {
+        return null;
+      }
 
-		this.sm.set(this.key, values)
-	}
+      return values[0];
+    }
+    /**
+     * Deletes the next queue entry and returns it (FIFO).
+     *
+     * @param value
+     * @param key
+     */
 
-	/**
-	 * Gets the number of queue entries.
-	 *
-	 * @param value
-	 * @param key
-	 */
-	getNumber () {
-		return this.getAll().length
-	}
+  }, {
+    key: "deleteNext",
+    value: function deleteNext() {
+      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'queue';
+      this.init();
+      var values = this.sm.get(key, []);
 
-	/**
-	 * Gets the next queue entry (FIFO).
-	 *
-	 * @param value
-	 * @param key
-	 */
-	getNext (key = 'queue') {
-		this.init()
+      if (!Array.isArray(values)) {
+        return null;
+      }
 
-		let values = this.sm.get(this.key, [])
+      if (this.getNumber() <= 0) {
+        return null;
+      }
 
-		if (!Array.isArray(values)) {
-			return null
-		}
+      return values.shift();
+    }
+  }]);
 
-		if (this.getNumber() <= 0) {
-			return null
-		}
+  return QueueManager;
+}();
 
-		return values[0]
-	}
-
-	/**
-	 * Deletes the next queue entry and returns it (FIFO).
-	 *
-	 * @param value
-	 * @param key
-	 */
-	deleteNext (key = 'queue') {
-		this.init()
-
-		let values = this.sm.get(key, [])
-
-		if (!Array.isArray(values)) {
-			return null
-		}
-
-		if (this.getNumber() <= 0) {
-			return null
-		}
-
-		return values.shift()
-	}
-}
-
-module.exports = StorageManager
-
+module.exports = StorageManager;
 
 /***/ })
 
