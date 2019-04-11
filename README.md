@@ -318,6 +318,14 @@ $ git push origin v0.0.14
 
 9. Create Release
 
+If necessary:
+
+```bash
+$ sudo npm install github-release-notes -g
+```
+
+Then:
+
 ```bash
 $ gren release
 ```
