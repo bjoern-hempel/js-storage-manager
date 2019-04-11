@@ -1,7 +1,10 @@
 # Changelog
 
 ## v0.0.19 (11/04/2019)
-*No changelog for this release.*
+#### New:
+
+* Dist generated js files are now backward compatible (es2015)
+* The package-lock.json is now also stored in the project
 
 ---
 
