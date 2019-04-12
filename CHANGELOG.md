@@ -1,11 +1,17 @@
 # Changelog
 
+## v0.0.20 (12/04/2019)
+#### New:
+
+* Fix the main file of the package for use as npm module.
+* Some documentation changes.
+---
+
 ## v0.0.19 (11/04/2019)
 #### New:
 
 * Dist generated js files are now backward compatible (es2015)
 * The package-lock.json is now also stored in the project
-
 ---
 
 ## v0.0.18 (18/03/2019)
