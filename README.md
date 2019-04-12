@@ -346,6 +346,14 @@ $ git push
 
 11. Publish to npm
 
+If necessary:
+
+```bash
+$ npm login
+```
+
+Then:
+
 ```bash
 $ npm publish
 ```
