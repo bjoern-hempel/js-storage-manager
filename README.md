@@ -330,6 +330,8 @@ Then:
 $ gren release
 ```
 
+**Important:** You need a valid Github token to access the API. You can get your own here: https://github.com/settings/tokens
+
 Adapt the changelog text to github if necessary: [changelog](https://github.com/bjoern-hempel/js-storage-manager/releases). Show all commits:
 
 ```bash
