@@ -1,6 +1,6 @@
 {
   "name": "js-storage-manager",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "A library to store data within the web storage.",
   "scripts": {
     "build": "webpack --env=build",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/bjoern-hempel/js-storage-manager.git"
   },
-  "main": "dist/storage-manager.js",
+  "main": "dist/es2015/storage-manager.js",
   "author": "Björn Hempel <bjoern@hempel.li>",
   "license": "MIT",
   "keywords": [
@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "file-loader": "^3.0.1",
     "mocha": "^6.0.2",
     "mock-local-storage": "^1.1.8",
     "uglifyjs-webpack-plugin": "^2.1.2",

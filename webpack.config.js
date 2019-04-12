@@ -4,7 +4,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: {
     'storage-manager': './src/storage-manager.js',
-    'storage-manager.min': './src/storage-manager.js',
   },
   mode: 'development',
   devtool: 'source-map',
@@ -19,10 +18,20 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['@babel/preset-env']
-        }
+        use: [
+          {
+
+            loader: 'file-loader',
+            options: {
+              context: 'src',
+              name: '[path][name].[ext]',
+              outputPath: 'es2015'
+            }
+          },
+          {
+            loader: 'babel-loader'
+          }
+        ]
       }
     ]
   },
